@@ -1,0 +1,253 @@
+/***********************************************************/
+.progressBar {
+	margin: 10px auto 20px;
+	padding: 0 10px;
+	z-index: 0;
+	clear: both;
+}
+.progressBar.no-labels {
+	padding-top: 30px;
+}
+.progressBar .steps,
+.progressBar .progress {
+	width: 85%;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.progressBar .steps {
+	position: relative;
+	z-index: 10;
+	width: 84%;
+}
+	.progressBar .steps p {
+		display: block;
+		height: 30px;
+		float: left;
+		font-family: Arial, Helvetica, Sans-serif;
+		font-size: 1em;
+		font-weight: bold;
+		line-height: 30px;
+		color: #ccc;
+		text-transform: uppercase;
+		text-shadow: 0px 1px 0 #000;
+		text-align: center;
+		opacity: 0.30;
+		padding: 0 0.5%;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+		.progressBar .steps p span {
+
+		}
+		.progressBar .steps a {
+			text-decoration: none;
+			color: #999;
+			font-size: 1.2em;
+			line-height: 25px;
+			cursor: pointer;
+			vertical-align: top;
+		}
+.progressBar .stepTooltip {
+    text-align: center;
+    height: 30px;
+}
+	.progressBar .stepTooltip span {
+		background: #333;
+		box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+		color: #CCCCCC;
+	    font-size: 1em;
+	    font-weight: bold;
+	    line-height: 30px;
+	    padding: 0 15px;
+	    display: inline-block;
+	    width: auto;
+	    text-transform: uppercase;
+	}
+
+.progressBar .progress {
+	box-shadow: inset 0px 0px 3px #000, 0 0 2px rgba(255, 255, 255, .2);
+	background-color: #333;
+	height: 34px;
+	border-radius: 17px;
+	position: relative;
+	z-index: 10;
+}
+
+.progressBar .progress .cuts {
+	width: 99%;
+	overflow: hidden;
+	position: relative;
+	margin: 2px auto;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	z-index: 20;
+	opacity: .25;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=25)";
+}
+
+	.progressBar .progress .cuts span {
+		display: block;
+		height: 30px;
+		float: left;
+		position: relative;
+		border-left: 1px solid #FFF;
+		border-right: 1px solid #000;
+		-moz-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+	.progressBar .progress .cuts span:first-child {
+		border-left: 0;
+	}
+	.progressBar .progress .cuts span:last-child {
+		border-right: 0;
+	}
+
+.progressBar .progress .bar {
+	z-index: 0;
+	position: absolute;
+	left: 0;
+	top: 2px;
+	margin: 0 2px;
+	width: 0;
+	height: 30px;
+	border-radius: 15px;
+	border: 0px solid #333;
+	box-shadow: inset 0px 10px 10px 1px rgba(255, 255, 255, .6), inset 0px -3px 10px 1px rgba(0, 0, 0, .5), 2px 0px 4px 0px rgba(255, 255, 255, .6);
+	overflow: hidden;
+}
+
+	.progressBar .progress .bar span { 
+		font-family: Arial, Helvetica, Sans-serif;
+		font-size: 1em;
+		font-weight: bold;
+		line-height: 30px;
+		text-transform: uppercase;
+		float: right;
+		margin: 0 15px 0 0;
+	}
+
+	.progressBar .progress .hoverinfo {
+		display: none;
+		color: #999;
+	    font-family: Arial,Helvetica,Sans-serif;
+	    font-size: 1em;
+	    font-weight: bold;
+	    line-height: 34px;
+	    margin: 0 auto;
+	    text-align: center;
+	    text-transform: uppercase;
+	    width: 50px;
+	}
+	.progressBar .progress:hover .hoverinfo {
+		display: block;
+	}
+/*************************************/
+.endsDates {
+	height: 70px;
+    margin: -55px auto 0;
+    position: relative;
+    width: 100%;
+    z-index: 0;
+}
+	.endsDates .start, 
+	.endsDates .end {
+	    max-width: 30px;
+	    padding: 2px 0;
+	    text-align: center;
+	    width: 20%;
+	    z-index: 5;
+	}
+	.endsDates .start {
+	    float: left;
+
+	}
+	.endsDates .end {
+	    float: right;
+	}
+
+	.endsDates .start span, 
+	.endsDates .end span {
+		font-family: "Times New Roman",Georgia,Serif;
+		font-weight: bold;
+		display: block;
+		opacity: 0.5;
+	}
+
+		.endsDates .dateday,
+		.endsDates .datemonth {
+		    color: #FFF;
+		    font-size: 2em;
+		    line-height: 0.85em;
+		}
+		.endsDates .datemonth {
+		    color: #AAA;
+		}
+		.endsDates .dateyear {
+		    color: #CCC;
+		    font-size: 1.0em;
+		    line-height: 1.2em;
+		}
+/**** LIGHT LAYOUT ***/
+.progressBar.light .progress {
+	background-color: rgba(0, 0, 0, 0.05);
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.2) inset, 0 0 2px rgba(255, 255, 255, 0.5);
+}
+.progressBar.light .steps p {
+	color: #444444;
+	text-shadow: 0 1px 0 #FFFFFF;
+}
+.progressBar.light .endsDates .dateday, 
+.progressBar.light .endsDates .datemonth {
+	color: #222222;
+}
+.progressBar.light .endsDates .datemonth {
+	color: #555555;
+}
+.progressBar.light .endsDates .dateyear {
+	color: #3C3C3C;
+}
+/**** MOBILE ***/
+@media screen and (max-width: 768px) {
+	.progressBar .steps,
+	.progressBar .progress {
+		width: 100%;
+	}
+
+	.endsDates {
+		height: auto;
+	    margin: 0 auto;
+	    position: relative;
+	    width: 100%;
+	    z-index: 0;
+	}
+
+	.endsDates .start, 
+	.endsDates .end {
+	    max-width: none;
+	    padding: 2px 0;
+	    width: auto;
+	}
+		.endsDates .end {
+		    text-align: right;
+		}
+		.endsDates .start span, 
+		.endsDates .end span {
+			font-family: Arial, Helvetica, Sans-serif;
+			display: inline-block;
+		}
+
+			.endsDates .dateday, 
+			.endsDates .datemonth,
+			.endsDates .dateyear {
+			    color: #AAA;
+			    font-size: 0.8em;
+			    line-height: 1.2em;
+			}
+			.endsDates .datemonth:before,
+			.endsDates .datemonth:after {
+			    content: "/";
+			    padding: 0 5px;
+			    color: #777;
+			}
+}

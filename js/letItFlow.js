@@ -5,11 +5,11 @@
 		var defaults = {
 			// colors : {
 			maxWidth: '',
-			themeColor: '',
+			themeColor: 'dark',
 			colorText: 'light',
 			colorBar: '#777',
 			color2: '',
-			// }, ends : {
+
 			firstDay: new Date(thisYear, 1 - 1, 1),
 			lastDay: new Date(thisYear, 12 - 1, 31),
 			// },
@@ -117,7 +117,7 @@
 				addLabels: function () {
 					$('.progress',$t).before('<div class="steps"></div>');
 					for (var i = 1; i < this.dates.length; i++) {
-						$pWidth = this.dates[i].sWidth - 1;
+						$pWidth = this.dates[i].sWidth;
 						$('.steps',$t).append('<p class="step' + [i] + '" style="width:' + $pWidth + '%;"><span>' + this.dates[i].sName + '</span></p>');
 						this.labWidth[i] = $('.steps .step' + [i] + ' span').width();
 					}
@@ -167,11 +167,13 @@
 				bGradient: function () {
 					$('.bar',$t).css({
 						"background": params.colorBar,
-						"background": "-moz-linear-gradient(left, " + params.colorBar + " 0%, " + params.color2 + " 96%, #ffffff 100%)", /* FF3.6+ */
+						"background": "-moz-linear-gradient(left, " + params.colorBar + " 0%, " + params.color2 + " 96%, #ffffff 100%)", /* FF3.6+ */					
 						"background": "-webkit-gradient(linear, left top, right top, color-stop(0%," + params.colorBar + "), color-stop(98%," + params.color2 + "), color-stop(100%,#ffffff))",
-						"background": "-webkit-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2 + " 96%,#ffffff 100%)",
+						"background": "-webkit-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2 + " 96%,#ffffff 100%)"
+					});
+					$('.bar',$t).css({
 						"background": "-o-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2 + " 96%,#ffffff 100%)",
-						"background": "-ms-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2 + " 96%,#ffffff 100%)",
+						"background": "-ms-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2+")",
 						"background": "linear-gradient(to right,  " + params.colorBar + " 0%," + params.color2 + " 96%,#ffffff 100%)",
 						"filter": "progid:DXImageTransform.Microsoft.gradient( startColorstr='" + params.colorBar + "', endColorstr='" + params.color2 + "',GradientType=1 )",
 						"-ms-filter": "progid:DXImageTransform.Microsoft.gradient(startColorstr='" + params.colorBar + "', endColorstr='" + params.color2 + "')"
