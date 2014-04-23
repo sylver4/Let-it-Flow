@@ -1,18 +1,16 @@
 (function ($) {
 	$.fn.sylver = function (userParams) {
-		var thisYear = new Date().getFullYear();
-		// params par defaults
+		// params par defaut
 		var defaults = {
-			// colors : {
 			maxWidth: '',
 			themeColor: 'dark',
 			colorText: 'light',
 			colorBar: '#777',
 			color2: '',
 
-			firstDay: new Date(thisYear, 1 - 1, 1),
-			lastDay: new Date(thisYear, 12 - 1, 31),
-			// },
+			firstDay: '',
+			lastDay: '',
+
 			steps: [],
 			stepsLabel: true,
 			labelTooltip: true,
