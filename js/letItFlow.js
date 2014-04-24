@@ -40,11 +40,16 @@
 				nSteps: 0,
 				dates: [],
 				labWidth: [],
+				firstDay: 0,
+				lastDay: 0,
 				progression: function () {
 					var toDay = $.now();
-					this.totalLength = params.lastDay - params.firstDay;
-					if(toDay > params.firstDay) {
-						this.totalProgression = Math.abs((toDay - params.firstDay) / this.totalLength) * 100;
+					this.firstDay = new Date(params.firstDay);
+					this.lastDay = new Date(params.lastDay);
+
+					this.totalLength = this.lastDay - this.firstDay;
+					if(toDay > this.firstDay) {
+						this.totalProgression = Math.abs((toDay - this.firstDay) / this.totalLength) * 100;
 					}  else {
 		                this.totalProgression = 0;
 		            }
@@ -75,12 +80,12 @@
 				createSteps: function () {
 					this.dates = [{
 						sName: params.firstDayName,
-						sDate: params.firstDay,
+						sDate: model.firstDay,
 						sPerc: '0',
 						sWidth: '0'
 					}, {
 						sName: params.lastStepName,
-						sDate: params.lastDay,
+						sDate: model.lastDay,
 						sPerc: '100',
 						sWidth: '100'
 					}];
@@ -93,7 +98,7 @@
 					$('.endsDates',$t).after('<div class="stepTooltip"></div>');
 					for (var i = 1; i < this.dates.length; i++) {
 						// calcul pourcentage des étapes
-						this.dates[i].sPerc = Math.abs((this.dates[i].sDate - params.firstDay) / this.totalLength) * 100;
+						this.dates[i].sPerc = Math.abs((this.dates[i].sDate - model.firstDay) / this.totalLength) * 100;
 						// calcul largeur des étapes
 						this.dates[i].sWidth = (this.dates[i].sPerc - this.dates[i - 1].sPerc).toFixed(4);
 						// séparation sur la bar
@@ -195,8 +200,8 @@
 				},
 				barInitViews: function () {
 					colorBar.layoutColor();
-					startDate = '<div class="start">' + model.formatEndsDates(params.firstDay) + '</div>';
-					endDate = '<div class="end">' + model.formatEndsDates(params.lastDay) + '</div>';
+					startDate = '<div class="start">' + model.formatEndsDates(model.firstDay) + '</div>';
+					endDate = '<div class="end">' + model.formatEndsDates(model.lastDay) + '</div>';
 					$('.progress',$t).after('<div class="endsDates">' + startDate + endDate + '</div>');
 					colorBar.textColor();
 					if (params.color2) {
