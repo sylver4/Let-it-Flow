@@ -1,3 +1,14 @@
+/*
+ * letItFlow - jQuery Plugin
+ * version: 1.0.0 (Fri, 04 April 2014)
+ *
+ * More info at http://sylverweb.be/letitflow/
+ * MIT Licensed.
+ *
+ * Copyright 2014 Sylverweb - letitflow@sylverweb.be
+ *
+ */
+
 (function ($) {
 	$.fn.sylver = function (userParams) {
 		// params par defaut
