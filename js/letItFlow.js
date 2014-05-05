@@ -13,7 +13,7 @@
 
 			steps: [],
 			stepsLabel: true,
-			labelTooltip: true,
+			//labelTooltip: false,
 			lastStepName: ''
 		};
 		var params = $.extend(defaults, userParams);
@@ -38,6 +38,7 @@
 				totalLength: 0,
 				totalProgression: null,
 				nSteps: 0,
+				nStepsName: 0,
 				dates: [],
 				labWidth: [],
 				progression: function () {
@@ -59,6 +60,7 @@
 						if (obj[i]) {
 							if(obj[i].stepName) {
 								stepName = obj[i].stepName;
+								this.nStepsName++;
 							} else {
 								stepName = '';
 							}
@@ -71,6 +73,7 @@
 							sWidth: ''
 						});
 					};
+
 				},
 				createSteps: function () {
 					this.dates = [{
@@ -90,7 +93,7 @@
 						return x.sDate - y.sDate;
 					})
 					$('.progress .bar',$t).before('<div class="cuts"></div>');
-					$('.endsDates',$t).after('<div class="stepTooltip"></div>');
+
 					for (var i = 1; i < this.dates.length; i++) {
 						// calcul pourcentage des étapes
 						this.dates[i].sPerc = Math.abs((this.dates[i].sDate - params.firstDay) / this.totalLength) * 100;
@@ -99,7 +102,9 @@
 						// séparation sur la bar
 						$('.cuts',$t).append('<span title="' + this.dates[i].sName + '" style="width:' + this.dates[i].sWidth + '%;"> </span>');
 					}
-					if (params.labelTooltip) {
+
+					if (this.nStepsName /*|| params.labelTooltip */) {
+						$('.endsDates',$t).after('<div class="stepTooltip"></div>');
 						var delayID;
 						$('.cuts span', $t).css('cursor','pointer');
 						$('.cuts span, .tt',$t).on("click", function () {
