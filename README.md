@@ -1,7 +1,7 @@
 Let-it-Flow
 ===========
-Let it Flow! is a plugin for display a progress bar to see where you are in a defined period.
-You want to know "where" you are in a project, a training, a trip, ... Just indicate a start  date and an end.
+Let it Flow! is a plugin that display a progress bar to see where you are in a defined timeline.
+You want to know "where" you are in a project, a training, a trip, ... Just set a start date and an end.
 
 ## How to use
 Download the plugin, unzip it, copy files and include letItFlow script and stylesheet in your document. Don't forget to also load the jQuery library. Example:
