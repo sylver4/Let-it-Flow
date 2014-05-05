@@ -13,7 +13,6 @@
 
 			steps: [],
 			stepsLabel: true,
-			//labelTooltip: false,
 			lastStepName: ''
 		};
 		var params = $.extend(defaults, userParams);
@@ -103,7 +102,7 @@
 						$('.cuts',$t).append('<span title="' + this.dates[i].sName + '" style="width:' + this.dates[i].sWidth + '%;"> </span>');
 					}
 
-					if (this.nStepsName /*|| params.labelTooltip */) {
+					if (this.nStepsName) {
 						$('.endsDates',$t).after('<div class="stepTooltip"></div>');
 						var delayID;
 						$('.cuts span', $t).css('cursor','pointer');
