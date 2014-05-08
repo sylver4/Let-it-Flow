@@ -14,6 +14,7 @@
 		// params par defaut
 		var defaults = {
 			maxWidth: '',
+			newHeight: '',
 			themeColor: 'dark',
 			colorText: 'light',
 			colorBar: '#777',
@@ -31,7 +32,7 @@
 		return this.each(function () {
 			var $t = $(this);
 
-			$t.append('<div class="progressBar" style="max-width:'+params.maxWidth+';"><div class="progress"><div class="bar"><span></span></div></div></div>');
+			$t.append('<div class="letItFlow" style="max-width:'+params.maxWidth+';"><div class="lif-progress"><div class="lif-bar"><span></span></div></div></div>');
 
 			$(function () {
 				global.init();
@@ -102,7 +103,7 @@
 					this.dates.sort(function (x, y) {
 						return x.sDate - y.sDate;
 					})
-					$('.progress .bar',$t).before('<div class="cuts"></div>');
+					$('.lif-progress .lif-bar',$t).before('<div class="cuts"></div>');
 
 					for (var i = 1; i < this.dates.length; i++) {
 						// calcul pourcentage des étapes
@@ -128,11 +129,11 @@
 					}
 				},
 				addLabels: function () {
-					$('.progress',$t).before('<div class="steps"></div>');
+					$('.lif-progress',$t).before('<div class="lif-steps"></div>');
 					for (var i = 1; i < this.dates.length; i++) {
 						$pWidth = this.dates[i].sWidth;
-						$('.steps',$t).append('<p class="step' + [i] + '" style="width:' + $pWidth + '%;"><span>' + this.dates[i].sName + '</span></p>');
-						this.labWidth[i] = $('.steps .step' + [i] + ' span').width();
+						$('.lif-steps',$t).append('<p class="step' + [i] + '" style="width:' + $pWidth + '%;"><span>' + this.dates[i].sName + '</span></p>');
+						this.labWidth[i] = $('.lif-steps .step' + [i] + ' span').width();
 					}
 					// highlight
 					views.labelHighlight();
@@ -150,25 +151,25 @@
 			};
 			var colorBar = {
 				layoutColor: function() {
-					$('.progressBar',$t).removeClass('light');
+					$('.letItFlow',$t).removeClass('light');
 					if(params.themeColor == 'light') {
-						$('.progressBar',$t).addClass('light');
+						$('.letItFlow',$t).addClass('light');
 					}
 				},
 				// couleur de la bar
 				bColor: function () {
-					$('.bar',$t).css('background-color', params.colorBar);
+					$('.lif-bar',$t).css('background-color', params.colorBar);
 				},
 				textColor: function () {
 					switch (params.colorText) {
 					case 'dark':
-						$('.bar',$t).css({
+						$('.lif-bar',$t).css({
 							'color': '#333',
 							'text-shadow': '0px 1px 0 rgba(255,255,255,0.7)'
 						});
 						break;
 					case 'light':
-						$('.bar',$t).css({
+						$('.lif-bar',$t).css({
 							'color': '#FFF',
 							'text-shadow': '0px 1px 0 rgba(0,0,0,0.7)'
 						});
@@ -178,13 +179,13 @@
 					}
 				},
 				bGradient: function () {
-					$('.bar',$t).css({
+					$('.lif-bar',$t).css({
 						"background": params.colorBar,
 						"background": "-moz-linear-gradient(left, " + params.colorBar + " 0%, " + params.color2 + " 96%, #ffffff 100%)", /* FF3.6+ */					
 						"background": "-webkit-gradient(linear, left top, right top, color-stop(0%," + params.colorBar + "), color-stop(98%," + params.color2 + "), color-stop(100%,#ffffff))",
 						"background": "-webkit-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2 + " 96%,#ffffff 100%)"
 					});
-					$('.bar',$t).css({
+					$('.lif-bar',$t).css({
 						"background": "-o-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2 + " 96%,#ffffff 100%)",
 						"background": "-ms-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2+")",
 						"background": "linear-gradient(to right,  " + params.colorBar + " 0%," + params.color2 + " 96%,#ffffff 100%)",
@@ -202,9 +203,9 @@
 					}
 					if (params.stepsLabel) {
 						model.addLabels();
-						$('.progressBar',$t).removeClass('no-labels');
+						$('.letItFlow',$t).removeClass('no-labels');
 					} else {
-						$('.progressBar',$t).addClass('no-labels');
+						$('.letItFlow',$t).addClass('no-labels');
 					}
 					this.windowResize();
 				},
@@ -212,27 +213,41 @@
 					colorBar.layoutColor();
 					startDate = '<div class="start">' + model.formatEndsDates(params.firstDay) + '</div>';
 					endDate = '<div class="end">' + model.formatEndsDates(params.lastDay) + '</div>';
-					$('.progress',$t).after('<div class="endsDates">' + startDate + endDate + '</div>');
+					$('.lif-progress',$t).after('<div class="endsDates">' + startDate + endDate + '</div>');
 					colorBar.textColor();
 					if (params.color2) {
 						colorBar.bGradient();
 					} else {
 						colorBar.bColor();
 					}
+					if(params.newHeight) {
+						heightVal = params.newHeight.replace(/[^-\d\.]/g, '');
+						console.log(params.newHeight);
+						if(heightVal < 21) {
+							$('.letItFlow',$t).addClass('small');
+							if (heightVal < 11) {
+								$('.letItFlow',$t).removeClass('small');
+								$('.letItFlow',$t).addClass('xsmall');
+							}
+						}
+						$('.lif-progress',$t).css('height',params.newHeight);
+						$('.lif-progress .lif-bar span',$t).css('line-height',params.newHeight);
+					}
+
 				},
 				barUpdateViews: function () {
 					if (model.totalProgression < 100) {
 						// définir largeur progression
-						$('.bar',$t).width(model.totalProgression + '%');
+						$('.lif-bar',$t).width(model.totalProgression + '%');
 						// afficher %
-						$('.bar span',$t).html(model.totalPercents + ' %');
+						$('.lif-bar span',$t).html(model.totalPercents + ' %');
 					} else {
-						$('.bar',$t).width('100%');
-						$('.bar span',$t).html('100 %');
+						$('.lif-bar',$t).width('100%');
+						$('.lif-bar span',$t).html('100 %');
 					}
 					if (model.totalPercents < 8) {
 						$('.hoverinfo',$t).remove();
-						$('.bar',$t).before('<span class="hoverinfo">' + model.totalPercents + ' %</span>');
+						$('.lif-bar',$t).before('<span class="hoverinfo">' + model.totalPercents + ' %</span>');
 					} else {
 						$('.hoverinfo',$t).remove();
 					}
@@ -242,7 +257,7 @@
 					for (var i = 1; i < model.dates.length; i++) {
 						// hightlight sur les mots
 						if ((model.dates[i].sPerc - model.dates[i].sWidth) < model.totalProgression) {
-							$('.steps .step' + [i],$t).css('opacity', '1');
+							$('.lif-steps .step' + [i],$t).css('opacity', '1');
 						}
 					}
 				},
