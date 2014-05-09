@@ -200,12 +200,12 @@
 					this.barInitViews();
 					if (params.steps.length) {
 						model.createSteps();
-					}
-					if (params.stepsLabel) {
-						model.addLabels();
-						$('.letItFlow',$t).removeClass('no-labels');
-					} else {
-						$('.letItFlow',$t).addClass('no-labels');
+						if (params.stepsLabel) {
+							model.addLabels();
+							$('.letItFlow',$t).removeClass('no-labels');
+						} else {
+							$('.letItFlow',$t).addClass('no-labels');
+						}
 					}
 					this.windowResize();
 				},
