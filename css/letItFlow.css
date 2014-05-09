@@ -253,6 +253,41 @@
   box-shadow: none;
 }
 
+/*** DATES "below" LAYOUT ** */
+.letItFlow.below .endsDates {
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  top: 0;
+}
+.letItFlow.below .endsDates .start,
+.letItFlow.below .endsDates .end {
+  max-width: none;
+  width: auto;
+  text-align: left;
+}
+.letItFlow.below .endsDates .end {
+  text-align: right;
+}
+.letItFlow.below .endsDates .start span,
+.letItFlow.below .endsDates .end span {
+  font-family: Arial, Helvetica, Sans-serif;
+  display: inline-block;
+}
+.letItFlow.below .endsDates .dateday,
+.letItFlow.below .endsDates .datemonth,
+.letItFlow.below .endsDates .dateyear {
+  color: #aaaaaa;
+  font-size: 0.8em;
+  line-height: 1.2em;
+}
+.letItFlow.below .endsDates .datemonth:before,
+.letItFlow.below .endsDates .datemonth:after {
+  content: "/";
+  padding: 0 5px;
+  color: #777777;
+}
+
 /*** MOBILE ** */
 @media screen and (max-width: 768px) {
   .letItFlow .lif-steps,
@@ -265,14 +300,12 @@
     margin: 0 auto;
     position: relative;
     top: 0;
-    width: 100%;
-    z-index: 0;
   }
   .endsDates .start,
   .endsDates .end {
     max-width: none;
-    padding: 2px 0;
     width: auto;
+    text-align: left;
   }
   .endsDates .end {
     text-align: right;

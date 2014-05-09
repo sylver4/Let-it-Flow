@@ -14,11 +14,13 @@
 		// params par defaut
 		var defaults = {
 			maxWidth: '',
-			newHeight: '',
+			maxHeight: '',
 			themeColor: 'dark',
 			colorText: 'light',
 			colorBar: '#777',
 			color2: '',
+			datesBelow: false,
+			flat: false,
 
 			firstDay: '',
 			lastDay: '',
@@ -32,7 +34,7 @@
 		return this.each(function () {
 			var $t = $(this);
 
-			$t.append('<div class="letItFlow" style="max-width:'+params.maxWidth+';"><div class="lif-progress"><div class="lif-bar"><span></span></div></div></div>');
+			$t.append('<div class="letItFlow"><div class="lif-progress"><div class="lif-bar"><span></span></div></div></div>');
 
 			$(function () {
 				global.init();
@@ -220,9 +222,11 @@
 					} else {
 						colorBar.bColor();
 					}
-					if(params.newHeight) {
-						heightVal = params.newHeight.replace(/[^-\d\.]/g, '');
-						console.log(params.newHeight);
+					if(params.maxWidth) {
+						$('.letItFlow',$t).css('max-width',params.maxWidth);
+					}
+					if(params.maxHeight) {
+						heightVal = params.maxHeight.replace(/[^-\d\.]/g, '');
 						if(heightVal < 21) {
 							$('.letItFlow',$t).addClass('small');
 							if (heightVal < 11) {
@@ -230,10 +234,15 @@
 								$('.letItFlow',$t).addClass('xsmall');
 							}
 						}
-						$('.lif-progress',$t).css('height',params.newHeight);
-						$('.lif-progress .lif-bar span',$t).css('line-height',params.newHeight);
+						$('.lif-progress',$t).css('height',params.maxHeight);
+						$('.lif-progress .lif-bar span',$t).css('line-height',params.maxHeight);
 					}
-
+					if(params.datesBelow) {
+						$('.letItFlow',$t).addClass('below');
+					}
+					if(params.flat) {
+						$('.letItFlow',$t).addClass('flat');
+					}
 				},
 				barUpdateViews: function () {
 					if (model.totalProgression < 100) {
