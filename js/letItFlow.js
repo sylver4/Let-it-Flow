@@ -183,14 +183,14 @@
 				bGradient: function () {
 					$('.lif-bar',$t).css({
 						"background": params.colorBar,
-						"background": "-moz-linear-gradient(left, " + params.colorBar + " 0%, " + params.color2 + " 96%, #ffffff 100%)", /* FF3.6+ */					
-						"background": "-webkit-gradient(linear, left top, right top, color-stop(0%," + params.colorBar + "), color-stop(98%," + params.color2 + "), color-stop(100%,#ffffff))",
-						"background": "-webkit-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2 + " 96%,#ffffff 100%)"
+						"background": "-moz-linear-gradient(left, " + params.colorBar + " 0%, " + params.color2 + " 100%)", /* FF3.6+ */					
+						"background": "-webkit-gradient(linear, left top, right top, color-stop(0%," + params.colorBar + "), color-stop(100%," + params.color2 + "))",
+						"background": "-webkit-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2 + " 100%)"
 					});
 					$('.lif-bar',$t).css({
-						"background": "-o-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2 + " 96%,#ffffff 100%)",
+						"background": "-o-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2 + " 100%)",
 						"background": "-ms-linear-gradient(left,  " + params.colorBar + " 0%," + params.color2+")",
-						"background": "linear-gradient(to right,  " + params.colorBar + " 0%," + params.color2 + " 96%,#ffffff 100%)",
+						"background": "linear-gradient(to right,  " + params.colorBar + " 0%," + params.color2 + " 100%)",
 						"filter": "progid:DXImageTransform.Microsoft.gradient( startColorstr='" + params.colorBar + "', endColorstr='" + params.color2 + "',GradientType=1 )",
 						"-ms-filter": "progid:DXImageTransform.Microsoft.gradient(startColorstr='" + params.colorBar + "', endColorstr='" + params.color2 + "')"
 					});
@@ -235,7 +235,8 @@
 							}
 						}
 						$('.lif-progress',$t).css('height',params.maxHeight);
-						$('.lif-progress .lif-bar span',$t).css('line-height',params.maxHeight);
+						newLineH = (heightVal - 2) +'px';
+						$('.lif-progress .lif-bar span',$t).css('line-height',newLineH);
 					}
 					if(params.datesBelow) {
 						$('.letItFlow',$t).addClass('below');
