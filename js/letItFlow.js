@@ -36,12 +36,6 @@
 
 			$t.append('<div class="letItFlow"><div class="lif-progress"><div class="lif-bar"><span></span></div></div></div>');
 
-			$(function () {
-				global.init();
-				setInterval(function () {
-					model.progression();
-				}, 3600);
-			});
 			var global = {
 				init: function () {
 					views.initViews();
@@ -291,6 +285,11 @@
 					});
 				}
 			};
+
+			global.init();
+			setInterval(function () {
+				model.progression();
+			}, 3600);
 		});
 	};
 })(jQuery);
