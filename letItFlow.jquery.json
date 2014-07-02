@@ -1,0 +1,34 @@
+{
+    "name": "letItFlow",
+    "title": "Let It Flow",
+    "version": "1.0.0",
+    "description": "Let it Flow! displays a progress bar to see where you are in a defined timeline",
+    "keywords": [
+        "progress",
+        "time",
+        "timeline",
+        "flow",
+        "percentage"
+    ],
+    
+    "author": {
+        "name": "Sylvie Versterren",
+        "email" : "letitflow@sylverweb.be",
+        "url": "http://sylverweb.be"
+    },
+    "licenses": [
+        {
+            "type": "CC BY-NC-SA 4.0",
+            "url": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+        },
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+        
+    ],
+    "homepage": "http://sylverweb.be/letitflow/",
+    "dependencies": {
+        "jquery": ">=1.7"
+    }
+}
