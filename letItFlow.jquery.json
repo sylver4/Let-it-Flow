@@ -1,7 +1,7 @@
 {
     "name": "letItFlow",
     "title": "Let It Flow",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Let it Flow! displays a progress bar to see where you are in a defined timeline",
     "keywords": [
         "progress",
