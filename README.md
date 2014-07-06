@@ -15,7 +15,7 @@ Download the plugin, unzip it, copy files and include letItFlow script and style
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#example').sylver();
+    $('#example').letitflow();
   });
 </script>
 ```

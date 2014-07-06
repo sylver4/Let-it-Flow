@@ -10,7 +10,7 @@
  */
 
 (function ($) {
-	$.fn.sylver = function (userParams) {
+	$.fn.letitflow = function (userParams) {
 		// params par defaut
 		var defaults = {
 			maxWidth: '',
