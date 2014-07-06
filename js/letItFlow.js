@@ -60,9 +60,7 @@
 					views.barUpdateViews();
 				},
 				getSteps: function (obj) {
-					for (property in obj) {
-						this.nSteps++;
-					}
+					this.nSteps = params.steps.length;
 					for (var i = 0; i < this.nSteps; i++) {
 						if (obj[i]) {
 							if(obj[i].stepName) {
@@ -95,6 +93,7 @@
 						sWidth: '100'
 					}];
 					model.getSteps(params.steps);
+
 					// réorganise par date
 					this.dates.sort(function (x, y) {
 						return x.sDate - y.sDate;

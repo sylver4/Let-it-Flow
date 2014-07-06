@@ -69,6 +69,7 @@
 }
 .letItFlow .lif-progress {
   box-shadow: black 0px 0px 3px inset, rgba(255, 255, 255, 0.2) 0 0 2px;
+  background-color: #333;
   background-color: rgba(0, 0, 0, 0.2);
   height: 34px;
   max-height: 34px;
@@ -163,7 +164,7 @@
   max-width: 30px;
   padding: 2px 0;
   text-align: center;
-  width: 20%;
+  width: 30px;
   z-index: 5;
   position: absolute;
 }
